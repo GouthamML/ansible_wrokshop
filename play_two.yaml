@@ -1,0 +1,19 @@
+---
+- name: install mariaDB server
+  hosts: db
+  tasks:
+    - name: installing maridb
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: starting mariadb
+      service: 
+        name: mariadb
+        state: started
+    - name: allowing through firewall
+      firewalld:
+        service: mysql
+        state: enabled
+        permanent: true
+        immediate: true
+...

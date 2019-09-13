@@ -1,0 +1,35 @@
+---
+- hosts: web
+  tasks:
+    - name: crate a partition
+      parted:
+        device: /dev/sdb
+        number: 1
+        state: present
+        part_start: 1MiB
+        part_end: 1GiB
+
+    - name: creatig a volume
+      lvg:
+        vg: vg1
+        pvs: /dev/sdb1
+    - name: creating lv
+      lvol:
+        vg: vg1
+        lv: lv1
+        size: 500M
+    - name: assign file system to lv
+      filesystem:
+        dev: /dev/vg1/lv1
+        fstype: xfs
+    - file:
+        path: /lvol-mount
+        state: directory
+    - name: mounting lv storage
+      mount:
+        path: /lvol-mount
+        src: /dev/vg1/lv1
+        fstype: xfs
+        state: mounted
+   
+        

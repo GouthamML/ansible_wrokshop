@@ -1,0 +1,14 @@
+---
+- name: stop apache
+  service:
+    name: httpd
+    state: stopped
+- name: remove apache
+  yum:
+    name: httpd
+    state: removed
+- name: disale http in firewall
+  firewalld:
+    service: httpd
+    state: disabled
+...

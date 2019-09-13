@@ -1,0 +1,14 @@
+---
+- name: Cron job demo
+  hosts: web
+  tasks:
+    - name: running on every monday of september
+      cron:
+        name: "process info"
+        month: 9
+        weekday: 1
+        hour: 19
+        user: root
+        job: "ps -ef"
+        cron_file: ansible_cron_file
+...

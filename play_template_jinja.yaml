@@ -1,0 +1,9 @@
+---
+- hosts: all
+  vars:
+  tasks:
+    - name: jinja template
+      template:
+        src: jinja_loop.j2
+        dest: /etc/loop
+...

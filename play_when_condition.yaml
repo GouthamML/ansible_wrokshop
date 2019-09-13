@@ -1,0 +1,20 @@
+---
+- name: when condition demo
+  hosts: all
+  tasks:
+    - name: install rpm on debian
+      apt:
+        name: apache2
+        state: present
+      when: ansible_distribution == "Debian"
+    - name: install rpm on Enterprise Linux
+      yum:
+        name: httpd
+        state: latest
+      when: ansible_distribution == "CentOS" or ansible_distribution == "RedHat" or ansible_distribution == "Fedora"
+    - name: start http only on web servers
+      service:
+        name: httpd
+        state: started
+      when: ansible_hostname in groups['web']
+...

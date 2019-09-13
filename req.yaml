@@ -1,0 +1,4 @@
+---
+- src: https://github.com/harpreetsingh123/lvm.git
+  scm: git
+  name: custom.lvm

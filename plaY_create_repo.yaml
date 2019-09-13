@@ -1,0 +1,13 @@
+---
+- name: creating yum repo
+  hosts: web
+  tasks:
+    - name: creating a repo
+      yum_repository:
+        name: epel
+        file: external_repo_file
+        description: EPEL YUM repo
+        baseurl: http://52.66.245.54/rpm
+        gpgcheck: false
+        enabled: true
+...

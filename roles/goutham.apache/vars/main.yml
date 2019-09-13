@@ -1,0 +1,5 @@
+---
+# vars file for goutham.apache
+srv: httpd
+replace: 'index.html'
+find: 'ansible.html'

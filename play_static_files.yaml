@@ -1,0 +1,24 @@
+---
+- name: static files
+  hosts: all
+  tasks:
+  - name: file module
+    file:
+      path: /tmp/dir1
+      state: directory
+      owner: devops
+      mode: 0777
+  - name: Creating a file
+    copy:
+      content: "hello from ansible"
+      dest: /tmp/dir1/file1.txt
+  - lineinfile: 
+      path: /tmp/dir1/file1.txt
+      line: "appending line using lineinfile module"
+  - blockinfile:
+      path: /tmp/dir1/file1.txt
+      block: |
+        First line content
+        second line ontent
+        third line content
+...

@@ -1,0 +1,13 @@
+---
+- name: creating users with group
+  hosts: web
+  vars_files:
+    - loop_user_vars.yaml
+  tasks:
+    - name: creating users
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        groups: "{{ item.groups }}"
+      loop: "{{ users }}"
+...

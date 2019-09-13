@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - name: importing db-task file
+      import_tasks: db_tasks.yaml
+      when: ansible_hostname in group['db']
+    - name: improrting web task file
+      import_tasks: web_tasks.yaml
+      when: ansible_hostname in group['web']
+...

@@ -1,0 +1,30 @@
+---
+- name: adding user with variables
+  hosts: web
+  vars_files: 
+    - group_passwd.yaml
+  tasks:
+#    - name: adding...
+ #     user:
+  #      name: superman
+   #     groups: developers
+    #    state: present
+     #   password: "{{ pass_var | password_hash('sha512') }}"
+    - name: adding user two
+      user:
+        name: spiderman
+        groups: wheel
+        uid: 1111
+        shell: /sbin/nologin
+        state: present
+        comment: hello
+        password: "{{ pass_var | password_hash('sha512') }}"
+    - name: installing group package
+      yum:
+        name: "@Development tools"
+        state: present
+    - name: starting firewall
+      service:
+        name: firewalld
+        state: started
+...

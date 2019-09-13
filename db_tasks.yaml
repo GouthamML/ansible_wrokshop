@@ -1,0 +1,15 @@
+---
+- name: remove package
+  yum:
+    name: mariadb-server
+    state: absent
+
+- name: stop db service
+  service:
+    name: mariadb
+    state: stopped
+- name: disab;e mysql from firewall
+  firewalld:
+    service: mysql
+    state: disabled
+...

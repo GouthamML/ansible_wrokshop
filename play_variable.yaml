@@ -1,0 +1,25 @@
+---
+- name: playbook1
+  hosts: web
+#  vars_files:
+#    - variable_file.yaml
+  tasks:
+    - name: install {{ pkg }}
+      yum:
+        name: "{{ pkg }}"
+        state: latest
+    - name: start {{ srv }}
+      service:
+        name: "{{ srv }}"
+        state: started
+    - name: allow {{ rule }} in firewall
+      firewalld:
+        service: "{{ rule }}"
+        state: enabled
+    - name: create a document root
+      copy:
+        content: "welcome to {{ ansible_hostname }}, IP ADDRESS is {{ ansible_all_ipv4_addresses[0] }}"
+        dest: /var/www/html/hello.html
+    - debug:
+        var: ansible_all_ipv4_addresses[0]
+...

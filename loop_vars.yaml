@@ -1,0 +1,9 @@
+---
+pkg:
+  - httpd
+  - git
+  - docker
+srv:
+  - httpd
+  - firewalld
+...

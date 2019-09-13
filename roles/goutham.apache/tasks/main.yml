@@ -1,0 +1,22 @@
+---
+# tasks file for goutham.apache
+- yum:
+    name: httpd
+    state: latest
+
+- service: name=nginx state=stopped
+
+- service:
+    name: "{{ srv }}"
+    state: started
+
+- replace:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: "{{ find }}"
+    replace: "{{ replace }}"
+  notify:
+    apache_restart
+
+- template:
+    src: index.html.j2
+    dest: "/var/www/html/{{ replace }}"

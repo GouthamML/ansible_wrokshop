@@ -1,0 +1,15 @@
+---
+- hosts: db
+  vars:
+    mysql_root_password: password@123
+    mysql_databases:
+      - name: testdb
+    mysql_users:
+      - name: devops
+        password: Redhat
+        host: '%'
+        priv: 'testdb.*:ALL'
+  roles:
+    - geerlingguy.mysql
+
+...

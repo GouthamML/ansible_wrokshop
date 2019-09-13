@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+    - name: creating host info file
+      template:
+          src: jinja_demo_work.j2
+          dest: /root/hostinfo.txt
+        
+      

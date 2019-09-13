@@ -1,0 +1,53 @@
+---
+# tasks file
+- name: creating aprtition
+  parted:
+    device: "{{ disk }}"
+    number: "{{ item.number }}"
+    state: present
+    part_start: "{{ item.start }}"
+    part_end: "{{ item.end }}"
+  with_items: 
+    - "{{ partitions }}"
+
+- name: creating volume groups
+  lvg:
+    vg: "{{ item.name }}"
+    pvs: "{{ item.devices }}"
+  with_items:
+    - "{{ volume_groups }}"
+
+- name: creating logical volumes
+  lvol:
+    vg: "{{ item.vgroup }}"
+    lv: "{{ item.name }}"
+    size: "{{ item.size }}"
+  with_items:
+    - "{{ logical_volumes }}"
+
+- name: creating file mount
+  file:
+    path: "{{ item.mount_path }}"
+    state: directory
+  with_items:
+    - "{{ logical_volumes }}"
+
+- name: creating file system
+  filesystem:
+    dev: "/dev/{{ item.vgroup }}/{{ item.name }}"
+    fstype: "{{ fsystem }}"
+  with_items: 
+    - "{{ logical_volumes }}"
+
+- name: mounting storage
+  mount:
+    path: "{{ item.mount_path }}"
+    src: "/dev/{{ item.vgroup }}/{{ item.name }}"
+    fstype: "{{ fsystem }}"
+    state: mounted
+  with_items: 
+    - "{{ logical_volumes }}"
+    
+
+
+

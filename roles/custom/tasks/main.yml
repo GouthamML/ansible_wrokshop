@@ -1,0 +1,30 @@
+---
+# tasks file for examfun
+- name: creating groups
+  group:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - staff
+    - webclients
+    - guests
+
+- name: adding users to staff and webclients
+  user: 
+    name: "{{ item }}"
+    state: present
+    groups: staff, webclients
+  loop: "{{ staff }}"
+
+- name: users from guest variable
+  user:
+    name: "{{ item }}"
+    state: present
+    groups: guests,webclients
+  loop: "{{ guests }}"
+- name: deleting users from revoke groups
+  user:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ revoke }}"
+    

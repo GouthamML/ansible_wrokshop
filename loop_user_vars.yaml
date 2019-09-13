@@ -1,0 +1,10 @@
+users:
+  - name: batman1
+    uid: 10101
+    groups: wheel
+  - name: batman2
+    uid: 10102
+    groups: wheel
+  - name: batman3
+    uid: 10103
+    groups: wheel

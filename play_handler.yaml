@@ -1,0 +1,23 @@
+---
+- name: hadler
+  hosts: web
+  tasks:
+    - yum: name=httpd state=latest
+
+    - copy:
+        content: "this is new file"
+        dest: /var/www/html/custom.html
+
+    - replace:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: "index.html"
+        replace: "custom.html"
+      notify:
+        - custome_handler
+  handlers:
+    - name: custome_handler
+      service:
+        name: httpd
+        state: restarted
+
+...

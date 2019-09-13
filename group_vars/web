@@ -1,0 +1,8 @@
+---
+pkg:
+  - httpd
+  - tree
+  - targetcli
+srv: target
+rule: dns
+...

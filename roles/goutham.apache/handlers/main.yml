@@ -1,0 +1,4 @@
+---
+# handlers file for goutham.apache
+- name: apache_restart
+  service: name=httpd state=restarted

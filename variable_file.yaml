@@ -1,0 +1,10 @@
+---
+pkg: httpd
+srv: httpd
+rule: http
+
+users:
+  name: harpreet
+  group: wheel
+  full_name: "harpreet singh"
+...

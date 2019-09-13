@@ -1,0 +1,61 @@
+---
+# vars file for examfun
+staff:
+- atryeya
+- aghosha
+- mitra
+- atri
+- angira
+- vidisha
+- nityam
+- sha
+- padma
+- hastha
+- lohita
+- prabakshya
+- yasya
+- nirba
+- alikta
+- nane
+- mrigashira
+- mrina
+guests:
+- amoka
+- pulastya
+- abhimukta
+- darka
+- adra
+- asti
+- lipta
+- nirghosha
+- lopa
+- mudra
+- ishna
+- pita
+- prasadya
+- matrena
+- bhave
+- hema
+- kumbhi
+- basato
+- sarva
+- indranika
+
+revoke:
+- stave
+- dave
+- lahada
+- srita
+- dhrita
+- amala
+- tejas
+- vrith
+- ahom
+- alet
+- amix
+- abes
+- altroba
+- mehagnesh
+- jatropha
+- alba
+- hibiscus

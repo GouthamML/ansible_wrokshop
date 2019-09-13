@@ -1,0 +1,5 @@
+---
+- import_playbook: uninstall.yaml
+- import_playbook: hosts.yaml
+- import_playbook: info.yaml
+...
